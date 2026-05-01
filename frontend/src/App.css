@@ -1,0 +1,279 @@
+/* ── Reset & base ─────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  background: #eef0fb;
+  color: #1e1e2e;
+  min-height: 100vh;
+}
+.app { max-width: 960px; margin: 0 auto; padding: 16px; }
+
+/* ── Header ───────────────────────────────── */
+.app-header { text-align: center; padding: 28px 0 12px; }
+.app-header h1 { font-size: 1.8rem; color: #4f46e5; }
+.app-header p  { color: #888; font-size: 0.9rem; margin-top: 4px; }
+
+/* ── Stepper ──────────────────────────────── */
+.stepper {
+  display: flex; justify-content: center;
+  gap: 0; margin: 24px 0; flex-wrap: wrap;
+}
+.step {
+  display: flex; flex-direction: column;
+  align-items: center; gap: 4px;
+  color: #aaa; font-size: 0.8rem; position: relative;
+  min-width: 90px;
+}
+.step-dot {
+  width: 34px; height: 34px; border-radius: 50%;
+  background: #ddd; display: flex;
+  align-items: center; justify-content: center;
+  font-weight: 700; font-size: 0.9rem;
+}
+.step.active .step-dot { background: #4f46e5; color: #fff; }
+.step.active { color: #4f46e5; }
+.step.done   .step-dot { background: #10b981; color: #fff; }
+.step.done   { color: #10b981; }
+.step-line {
+  position: absolute; top: 17px; left: calc(50% + 17px);
+  width: calc(100% - 34px); height: 2px; background: #ddd;
+}
+.step.done .step-line { background: #10b981; }
+
+/* ── Card ─────────────────────────────────── */
+.card {
+  background: #fff; border-radius: 16px;
+  padding: 28px; box-shadow: 0 4px 20px rgba(0,0,0,.07);
+}
+.card h2 { font-size: 1.25rem; color: #4f46e5; margin-bottom: 6px; }
+.hint { color: #888; font-size: 0.85rem; margin-bottom: 18px; }
+
+/* ── Form elements ────────────────────────── */
+.inp {
+  width: 100%; padding: 9px 13px;
+  border: 1.5px solid #e0e0e0; border-radius: 8px;
+  font-size: 0.9rem; margin-bottom: 10px;
+  transition: border .2s;
+}
+.inp:focus { outline: none; border-color: #4f46e5; }
+.row { display: flex; gap: 10px; align-items: center; margin-bottom: 8px; }
+.row .inp { margin-bottom: 0; }
+.chk { display: flex; align-items: center; gap: 6px;
+       white-space: nowrap; font-size: 0.88rem; cursor: pointer; }
+
+.cat-box {
+  background: #f8f8ff; border: 1px solid #dddeff;
+  border-radius: 10px; padding: 14px; margin-bottom: 12px;
+}
+.cat-box p { font-size: 0.85rem; color: #666; margin-bottom: 8px; }
+
+/* ── Buttons ──────────────────────────────── */
+.btn {
+  background: #4f46e5; color: #fff; border: none;
+  padding: 10px 22px; border-radius: 8px;
+  font-size: 0.92rem; cursor: pointer; transition: background .2s;
+}
+.btn:hover:not(:disabled) { background: #4338ca; }
+.btn:disabled { background: #c5c3ee; cursor: not-allowed; }
+.btn-sec {
+  background: transparent; color: #4f46e5;
+  border: 1.5px solid #4f46e5;
+  padding: 10px 22px; border-radius: 8px;
+  font-size: 0.92rem; cursor: pointer;
+}
+.btn-sm {
+  background: #ede9fe; color: #4f46e5; border: none;
+  padding: 6px 14px; border-radius: 6px;
+  font-size: 0.82rem; cursor: pointer; margin-top: 6px;
+}
+.btn-danger {
+  background: #fee2e2; color: #dc2626; border: none;
+  padding: 6px 10px; border-radius: 6px; cursor: pointer;
+}
+.btn-icon {
+  background: none; border: none; color: #dc2626;
+  cursor: pointer; font-size: 1rem; padding: 2px 6px;
+}
+
+/* ── List ─────────────────────────────────── */
+.list { margin-top: 18px; }
+.list h3 { margin-bottom: 8px; font-size: 0.95rem; color: #555; }
+.list-item {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 10px 14px; background: #f8f8ff;
+  border-radius: 8px; margin-bottom: 6px; font-size: 0.88rem;
+}
+.badge {
+  display: inline-block; background: #ede9fe; color: #4f46e5;
+  border-radius: 99px; padding: 2px 8px; font-size: 0.78rem;
+  margin-left: 8px;
+}
+
+/* ── Scores grid ──────────────────────────── */
+.scores-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px,1fr)); gap: 10px; margin: 12px 0; }
+.score-item label { display: block; font-size: 0.82rem; color: #666; margin-bottom: 3px; }
+
+/* ── Alt table ────────────────────────────── */
+.alt-table-wrap { overflow-x: auto; margin-top: 12px; }
+.alt-table { border-collapse: collapse; width: 100%; font-size: 0.85rem; }
+.alt-table th, .alt-table td { padding: 8px 12px; border: 1px solid #e8e8f0; text-align: center; }
+.alt-table th { background: #f0f0ff; color: #4f46e5; }
+
+/* ── Saaty scale reminder ─────────────────── */
+.scale-reminder {
+  display: flex; align-items: center; flex-wrap: wrap; gap: 6px;
+  background: #fffde7; border-radius: 8px; padding: 10px 14px;
+  font-size: 0.82rem; margin-bottom: 14px;
+}
+.scale-badge {
+  background: #4f46e5; color: #fff;
+  border-radius: 4px; padding: 2px 7px; font-weight: 700;
+}
+.scale-desc { color: #888; }
+
+/* ── Pairwise Matrix ──────────────────────── */
+.matrix-wrap { overflow-x: auto; margin: 14px 0; }
+.matrix { border-collapse: collapse; }
+.matrix th, .matrix td { border: 1px solid #e0e0f0; padding: 6px 8px; text-align: center; font-size: 0.83rem; }
+.matrix th { background: #f0f0ff; color: #4f46e5; }
+.corner { background: #f8f8ff; }
+.col-head, .row-head { font-weight: 700; background: #f0f0ff; color: #4f46e5; }
+.diag { background: #f5f5f5; }
+.upper { background: #fff; }
+.lower { background: #f8f8ff; }
+.one { font-weight: 700; color: #10b981; }
+.auto { color: #888; font-style: italic; font-size: 0.8rem; }
+.sel { border: 1px solid #dddeff; border-radius: 4px; padding: 3px 4px; font-size: 0.78rem; background: #fff; }
+
+/* ── Nav ──────────────────────────────────── */
+.nav { display: flex; justify-content: space-between; align-items: center; margin-top: 22px; }
+
+/* ── Result ───────────────────────────────── */
+.result-card h2 { margin-bottom: 14px; }
+.banner {
+  padding: 14px 18px; border-radius: 10px;
+  font-weight: 600; font-size: 0.93rem; margin-bottom: 18px;
+}
+.banner.ok  { background: #d1fae5; color: #065f46; border-left: 5px solid #10b981; }
+.banner.err { background: #fee2e2; color: #991b1b; border-left: 5px solid #dc2626; }
+
+/* ── Tabs ─────────────────────────────────── */
+.tabs { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 18px; }
+.tab {
+  background: #f0f0ff; color: #4f46e5; border: 1.5px solid #dddeff;
+  padding: 7px 14px; border-radius: 8px; font-size: 0.83rem;
+  cursor: pointer; transition: all .2s;
+}
+.tab:hover    { background: #ede9fe; }
+.tab-active   { background: #4f46e5; color: #fff; border-color: #4f46e5; }
+
+/* ── Generic table ────────────────────────── */
+.tbl { border-collapse: collapse; width: 100%; font-size: 0.85rem; margin: 12px 0; }
+.tbl th, .tbl td { border: 1px solid #e0e0f0; padding: 8px 12px; text-align: center; }
+.tbl th { background: #f0f0ff; color: #4f46e5; font-weight: 700; }
+.mono { font-family: 'Courier New', monospace; font-size: 0.82rem; }
+.sum-row td { background: #f0f0ff; font-weight: 700; }
+.total-row td { background: #f8f8ff; }
+.highlight-cell { background: #ede9fe; font-weight: 700; color: #4f46e5; }
+
+/* ── Bars ─────────────────────────────────── */
+.bar-wrap { display: flex; align-items: center; gap: 8px; }
+.bar-fill {
+  height: 12px; background: #4f46e5; border-radius: 99px;
+  min-width: 4px; transition: width .4s ease;
+}
+.score-fill { background: #10b981; }
+.bar-wrap span { font-size: 0.78rem; color: #666; white-space: nowrap; }
+
+/* ── Stats row ────────────────────────────── */
+.stats-row { display: grid; grid-template-columns: repeat(5,1fr); gap: 10px; margin: 16px 0; }
+.stat {
+  background: #f8f8ff; border-radius: 10px; padding: 12px 8px;
+  text-align: center; border: 1px solid #e8e8f4;
+}
+.stat-label { display: block; font-size: 0.75rem; color: #888; margin-bottom: 4px; }
+.stat strong { display: block; font-size: 1.05rem; color: #4f46e5; margin: 2px 0; font-family: monospace; }
+.stat-sub { font-size: 0.7rem; color: #aaa; }
+.stat-ok { border-color: #10b981; background: #f0fdf4; }
+.stat-ok strong { color: #10b981; }
+.stat-err { border-color: #dc2626; background: #fef2f2; }
+.stat-err strong { color: #dc2626; }
+
+.cr-verdict {
+  padding: 12px 18px; border-radius: 8px;
+  font-weight: 600; font-size: 0.9rem; margin: 12px 0;
+}
+.cr-verdict.ok  { background: #d1fae5; color: #065f46; }
+.cr-verdict.err { background: #fee2e2; color: #991b1b; }
+
+/* ── RI table ─────────────────────────────── */
+.ri-table { background: #f8f8ff; border-radius: 10px; padding: 14px; margin: 14px 0; }
+.ri-table p { font-size: 0.85rem; margin-bottom: 8px; }
+
+/* ── Incoherent pairs ─────────────────────── */
+.incoherent-box { background: #fff5f5; border-radius: 10px; padding: 14px; margin-top: 14px; border: 1px solid #fecaca; }
+.incoherent-box h4 { color: #dc2626; margin-bottom: 10px; font-size: 0.9rem; }
+.pair {
+  background: #fff; border-radius: 8px; padding: 8px 12px;
+  margin-bottom: 6px; font-size: 0.85rem; border-left: 3px solid #dc2626;
+}
+.ratio { background: #fecaca; color: #991b1b; border-radius: 4px; padding: 1px 6px; margin-left: 8px; font-size: 0.78rem; }
+
+/* ── Winner ───────────────────────────────── */
+.winner {
+  background: linear-gradient(135deg, #4f46e5, #818cf8);
+  color: #fff; padding: 14px 20px; border-radius: 10px;
+  font-size: 1rem; margin-bottom: 14px;
+}
+.best-row td { background: #f0fdf4; }
+
+/* ── Chart ────────────────────────────────── */
+.chart-wrap { margin-top: 20px; }
+
+/* ── Result header ────────────────────────── */
+.result-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* ── PDF button ───────────────────────────── */
+.btn-pdf {
+  background: #dc2626;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background .2s;
+}
+.btn-pdf:hover { background: #b91c1c; }
+
+/* ── Highlighted column ───────────────────── */
+.highlight-col {
+  background: #ede9fe;
+  color: #4f46e5;
+}
+
+/* ── Warn box ─────────────────────────────── */
+.warn-box {
+  background: #fffbeb;
+  border: 1px solid #f59e0b;
+  border-left: 4px solid #f59e0b;
+  color: #92400e;
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 14px;
+  font-size: 0.88rem;
+}
+
+/* ── Weight sub ───────────────────────────── */
+.weight-sub {
+  font-size: 0.72rem;
+  color: #888;
+  font-weight: normal;
+}
