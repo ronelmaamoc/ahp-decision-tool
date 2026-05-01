@@ -26,3 +26,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATIC_URL = '/static/'
 
 DATABASES = {}
+
+import os
+
+# Production
+ALLOWED_HOSTS = ['*']
+STATIC_URL = '/static/'
+
+# PORT Railway
+PORT = os.environ.get('PORT', 8000)
